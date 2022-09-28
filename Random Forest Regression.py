@@ -1,6 +1,7 @@
 import dataset as dataset
 import matplotlib
 import numpy as np
+import predictions as predictions
 import seaborn as sns
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -37,3 +38,31 @@ grid_search = GridSearchCV(estimator=rf,
                            param_grid=params,
                            cv = 4,
                            n_jobs=-1, verbose=1, scoring="accuracy")
+grid_search.fit(X_train, y_train)
+grid_search.best_score_
+rf_best = grid_search.best_estimator_rf_best
+from sklearn.tree import plot_tree
+plt.figure(figsize=(80,40))
+plot_tree(rf_best.estimators_[5], feature_names = X.columns,class_names=['Disease', "No Disease"],filled=True);
+from sklearn.tree import plot_tree
+plt.figure(figsize=(80,40))
+plot_tree(rf_best.estimators_[7], feature_names = X.columns,class_names=['Disease', "No Disease"],filled=True);
+rf_best.feature_importances_
+imp_df = pd.DataFrame({
+    "Varname": X_train.columns,
+    "Imp": rf_best.feature_importances_
+})
+imp_df.sort_values(by="Imp", ascending=False)
+y_pred = model.predict(X_test)
+from sklearn import metrics
+
+print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))
+print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
+print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+errors = abs(predictions - y_test)
+#Calculate mean absolute percentage error (MAPE)
+mape = 100 * (errors / y_test)
+# Calculate and display accuracy
+accuracy = 100 - np.mean(mape)
+print('Accuracy:', round(accuracy, 2), '%.')
+print('Average absolute error:', round(np.mean(errors), 2), 'degrees.')
