@@ -1,0 +1,8 @@
+setup.py
+PySimpleGUIWeb/PySimpleGUIWeb.py
+PySimpleGUIWeb/__init__.py
+PySimpleGUIWeb.egg-info/PKG-INFO
+PySimpleGUIWeb.egg-info/SOURCES.txt
+PySimpleGUIWeb.egg-info/dependency_links.txt
+PySimpleGUIWeb.egg-info/requires.txt
+PySimpleGUIWeb.egg-info/top_level.txt
