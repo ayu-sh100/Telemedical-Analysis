@@ -1,0 +1,11 @@
+1. Data is mixed (numerical + categorical)
+2. Update column name per format
+3. Grouped rows for frequency count of all different categories
+4. Base : replaced null in Smoking Status by the most occuring category
+5. Filtered BMI for null
+6. Numerical Data so approached to fill up null data in BMI by median value
+7. Smoke Status (categorical -> numerical) based on order of data.
+8. Work Type based upon orders (datas are subdivided within same chain) --> numerical
+9. boolean conversion
+10. categorical conversion for gender
+11. Median 
